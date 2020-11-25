@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+from setuptools import setup
+
+setup(
+    name='scrapy-save-as-pdf',
+    version='0.1.0',
+    url='https://github.com/etng/scrapy-save-as-pdf',
+    description='Download PDF or Save page as PDF',
+    long_description=open('README.md').read() + "\n\n" + open("CHANGES.md").read(),
+    author='etng',
+    maintainer='etng',
+    maintainer_email='etng2004@gmail.com',
+    license='BSD',
+    packages=['scrapy_save_as_pdf'],
+    zip_safe=False,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: BSD License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Framework :: Scrapy',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+    requires=['scrapy', 'selenium', 'requests'],
+)
