@@ -1,6 +1,5 @@
 CURRENT_VERSION=$(shell grep '__version__' scrapy_save_as_pdf/__init__.py |awk '{print $$3}'|awk -F'"' '{print $$2}')
-bump_version=\bumpversion --verbose
-# --allow-dirty
+bump_version=\bumpversion --verbose --allow-dirty
 # --dry-run
 release:
 	pip3 install twine bumpversion

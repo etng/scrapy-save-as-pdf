@@ -11,6 +11,8 @@ class SaveAsPdfPipeline:
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
             setattr(self, k, v)
+        if self.save_base_dir:
+            os.makedirs(self.save_base_dir, 0o777, True)
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -18,23 +20,29 @@ class SaveAsPdfPipeline:
             proxy=crawler.settings.get('PROXY', ''),
             chromedriver_path=crawler.settings.get('CHROME_DRIVER_PATH', ''),
             download_timeout=crawler.settings.get('PDF_DOWNLOAD_TIMEOUT', ''),
-            save_as_pdf=crawler.settings.get('PDF_SAVE_AS_PDF', False),
+            save_url_as_pdf=crawler.settings.get('PDF_SAVE_AS_PDF', False),
             print_options=crawler.settings.get('PDF_PRINT_OPTIONS', {}),
             save_base_dir=crawler.settings.get('PDF_SAVE_PATH', "./"),
         )
 
     def process_item(self, item, spider):
         if pdf_url := item.get("pdf_url"):
-            item["origin_pdf_url"] = pdf_url
+            try:
+                item["origin_pdf_url"] = pdf_url
+            except:  # noqa
+                pass
             item["pdf_url"] = self.download_pdf(pdf_url)
-        elif self.save_as_pdf:
+        elif self.save_url_as_pdf:
             item["pdf_url"] = self.save_as_pdf(item.get("url"))
         return item
 
     @staticmethod
     def hash_url(url) -> str:
         m = md5()
-        m.update(url)
+        try:
+            m.update(url)
+        except:  # noqa
+            m.update(url.encode('utf-8'))
         return m.hexdigest()
 
     def download_pdf(self, pdf_url) -> str:
