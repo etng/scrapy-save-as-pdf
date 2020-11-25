@@ -15,7 +15,7 @@ pypi:
 test_use:
 	pip3 install -i https://test.pypi.org/simple/ scrapy-save-as-pdf -U
 use:
-	pip3 install scrapy-save-as-pdf -U
+	pip3 install -i https://pypi.org/simple/ scrapy-save-as-pdf -U
 major:
 	${bump_version} --current-version $(CURRENT_VERSION) major setup.py scrapy_save_as_pdf/__init__.py
 minor:
