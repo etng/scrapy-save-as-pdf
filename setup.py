@@ -7,6 +7,7 @@ setup(
     url='https://github.com/etng/scrapy-save-as-pdf',
     description='Download PDF or Save page as PDF',
     long_description=open('README.md').read() + "\n\n" + open("CHANGES.md").read(),
+    long_description_content_type='text/markdown',
     author='etng',
     maintainer='etng',
     maintainer_email='etng2004@gmail.com',

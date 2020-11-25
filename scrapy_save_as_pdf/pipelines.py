@@ -8,6 +8,10 @@ from hashlib import md5
 
 
 class SaveAsPdfPipeline:
+    def __init__(self, **kwargs):
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
