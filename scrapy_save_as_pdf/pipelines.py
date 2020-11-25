@@ -29,6 +29,7 @@ class SaveAsPdfPipeline:
             item["pdf_url"] = self.download_pdf(pdf_url)
         elif self.save_as_pdf:
             item["pdf_url"] = self.save_as_pdf(item.get("url"))
+        return item
 
     @staticmethod
     def hash_url(url) -> str:

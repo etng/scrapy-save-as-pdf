@@ -4,6 +4,7 @@ bump_version=\bumpversion --verbose
 # --dry-run
 release:
 	pip3 install twine bumpversion
+	rm -fr build dist *.egg-info
 	python3 setup.py sdist bdist_wheel
 	twine check dist/*
 test_pypi:
@@ -13,9 +14,9 @@ pypi:
 	twine upload dist/*
 	xdg-open https://pypi.org/project/scrapy-save-as-pdf/
 test_use:
-	pip install -i https://test.pypi.org/simple/ scrapy-save-as-pdf
+	pip3 install -i https://test.pypi.org/simple/ scrapy-save-as-pdf -U
 use:
-	pip install scrapy-save-as-pdf
+	pip3 install scrapy-save-as-pdf -U
 major:
 	${bump_version} --current-version $(CURRENT_VERSION) major setup.py scrapy_save_as_pdf/__init__.py
 minor:
