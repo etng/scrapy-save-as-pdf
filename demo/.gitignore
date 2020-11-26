@@ -1,3 +1,4 @@
 *.pyc
 pdfs
 local_settings.py
+.qiniu_*_hostscache.json

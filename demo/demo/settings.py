@@ -87,6 +87,7 @@ ROBOTSTXT_OBEY = True
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 from textwrap import dedent
+
 PROXY = ""
 CHROME_DRIVER_PATH = '/snap/bin/chromium.chromedriver'
 PDF_SAVE_PATH = "./pdfs"
@@ -113,11 +114,23 @@ PDF_PRINT_OPTIONS = {
         <div>
     </div>'''.strip()),
 }
+WEBDRIVER_HUB_URL = ''
+PDF_ON_SAVE = 'demo.utils.SaveToQiNiu'
 del dedent
 
 ITEM_PIPELINES = {
     'scrapy_save_as_pdf.pipelines.SaveAsPdfPipeline': -1,
+    'demo.pipelines.SaveToQiniuPipeline': 0,
 }
+
+QINIU_AK = ''
+QINIU_SK = ''
+QINIU_BUCKET = ''
+QINIU_DOMAIN = ''
+QINIU_DEL_SRC = True
+QINIU_FIELDS = [
+    'pdf_url',
+]
 
 try:
     from .local_settings import *

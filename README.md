@@ -45,6 +45,7 @@ ITEM_PIPELINES = {
 ```
 The order should before your persist pipeline such as save to database and after your preprocess pipeline.
 
+In the demo scrapy project, I put the `SaveToQiniuPipeline` after this plugin to persist pdf to the cloud.
 
 ## Usage
 

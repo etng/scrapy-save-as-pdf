@@ -1,6 +1,7 @@
 .PHONY: demo build
+# actually we do not need to get the old version back for its is stored in the `setup.cfg` file
 CURRENT_VERSION=$(shell grep '__version__' scrapy_save_as_pdf/__init__.py |awk '{print $$3}'|awk -F'"' '{print $$2}')
-bump_version=\bumpversion --verbose --allow-dirty
+bump_version=\bumpversion --verbose --allow-dirty --commit --tag
 # --dry-run
 build: release
 release:
@@ -19,10 +20,13 @@ test_use:
 use:
 	pip3 install -i https://pypi.org/simple/ scrapy-save-as-pdf -U
 major:
-	${bump_version} --current-version $(CURRENT_VERSION) major setup.py scrapy_save_as_pdf/__init__.py
+	${bump_version} major setup.py scrapy_save_as_pdf/__init__.py
+	#${bump_version} --current-version ${CURRENT_VERSION} major setup.py scrapy_save_as_pdf/__init__.py
 minor:
-	${bump_version}  --current-version ${CURRENT_VERSION} minor setup.py scrapy_save_as_pdf/__init__.py
+	${bump_version}  minor setup.py scrapy_save_as_pdf/__init__.py
+	#${bump_version}  --current-version ${CURRENT_VERSION} minor setup.py scrapy_save_as_pdf/__init__.py
 patch:
-	${bump_version}  --current-version ${CURRENT_VERSION} patch setup.py scrapy_save_as_pdf/__init__.py
+	${bump_version}  patch setup.py scrapy_save_as_pdf/__init__.py
+	#${bump_version}  --current-version ${CURRENT_VERSION} patch setup.py scrapy_save_as_pdf/__init__.py
 demo:
 	(cd demo && python3 entry.py)
