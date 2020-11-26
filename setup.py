@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='scrapy-save-as-pdf',
-    version='0.1.3',
+    version='0.2.0',
     url='https://github.com/etng/scrapy-save-as-pdf',
     description='Download PDF or Save page as PDF',
     long_description=open('README.md').read() + "\n\n" + open("CHANGES.md").read(),
