@@ -1,2 +1,3 @@
 *.pyc
 pdfs
+local_settings.py

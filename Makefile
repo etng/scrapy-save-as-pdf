@@ -25,4 +25,4 @@ minor:
 patch:
 	${bump_version}  --current-version ${CURRENT_VERSION} patch setup.py scrapy_save_as_pdf/__init__.py
 demo:
-	(cd demo && scrapy crawl example)
+	(cd demo && python3 entry.py)

@@ -8,6 +8,13 @@ Install scrapy-save-as-pdf using pip::
     $ pip install scrapy-save-as-pdf
 
 ## Configuration
+0. _(Optionally)_ if you want to use `WEBDRIVER_HUB_URL`, you can use `docker` to setup one like this:
+
+```shell script
+docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-alpha-7-20201119
+```
+then `WEBDRIVER_HUB_URL` value is `http://docker_host_ip:4444/wd/hub`
+and we often debug on local host, so we use `http://127.0.0.1:4444/wd/hub`
 
 1. Add the  ``settings.py`` of your Scrapy project like this:
 
@@ -23,7 +30,10 @@ PDF_PRINT_OPTIONS = {
     'printBackground': True,
     'preferCSSPageSize': True,
 }
+WEBDRIVER_HUB_URL = 'http://127.0.0.1:4444/wd/hub'
 ```
+
+If both `WEBDRIVER_HUB_URL` and `CHROME_DRIVER_PATH` are set, we use `WEBDRIVER_HUB_URL`.
 
 2. Enable the pipeline by adding it to ``ITEM_PIPELINES`` in your ``settings.py`` file and changing HttpCompressionMiddleware
  priority:

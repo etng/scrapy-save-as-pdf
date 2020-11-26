@@ -86,7 +86,7 @@ ROBOTSTXT_OBEY = True
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-
+from textwrap import dedent
 PROXY = ""
 CHROME_DRIVER_PATH = '/snap/bin/chromium.chromedriver'
 PDF_SAVE_PATH = "./pdfs"
@@ -94,11 +94,32 @@ PDF_SAVE_AS_PDF = True
 PDF_DOWNLOAD_TIMEOUT = 60
 PDF_PRINT_OPTIONS = {
     'landscape': False,
-    'displayHeaderFooter': False,
+    'displayHeaderFooter': True,
     'printBackground': True,
     'preferCSSPageSize': True,
+    'marginTop': 2,
+    'marginBottom': 2,
+    'headerTemplate': dedent('''
+    <div style="font-size:12px;text-align:center">
+        <span class="title" style="color:red"></span>
+        (<span class="url"></span>)
+    </div>
+    '''.strip()),
+    'footerTemplate': dedent('''
+    <div style="font-size:12px">
+        <div style="float:left;width:50%"><span class="date"></span></div> 
+        <div style="float:right;text-align:right;width:50%">
+            <span class="pageNumber"></span>/<span class="totalPages"></span>
+        <div>
+    </div>'''.strip()),
 }
+del dedent
 
 ITEM_PIPELINES = {
     'scrapy_save_as_pdf.pipelines.SaveAsPdfPipeline': -1,
 }
+
+try:
+    from .local_settings import *
+except:  # noqa
+    pass
