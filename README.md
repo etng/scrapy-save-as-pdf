@@ -14,7 +14,7 @@ Install scrapy-save-as-pdf using pip::
 ```python
 PROXY = ""
 CHROME_DRIVER_PATH ='/snap/bin/chromium.chromedriver'
-PDF_SAVE_PATH="./pdfs"
+PDF_SAVE_PATH = "./pdfs"
 PDF_SAVE_AS_PDF = False
 PDF_DOWNLOAD_TIMEOUT = 60
 PDF_PRINT_OPTIONS = {

@@ -1,6 +1,8 @@
+.PHONY: demo build
 CURRENT_VERSION=$(shell grep '__version__' scrapy_save_as_pdf/__init__.py |awk '{print $$3}'|awk -F'"' '{print $$2}')
 bump_version=\bumpversion --verbose --allow-dirty
 # --dry-run
+build: release
 release:
 	pip3 install twine bumpversion
 	rm -fr build dist *.egg-info
@@ -22,3 +24,5 @@ minor:
 	${bump_version}  --current-version ${CURRENT_VERSION} minor setup.py scrapy_save_as_pdf/__init__.py
 patch:
 	${bump_version}  --current-version ${CURRENT_VERSION} patch setup.py scrapy_save_as_pdf/__init__.py
+demo:
+	(cd demo && scrapy crawl example)
