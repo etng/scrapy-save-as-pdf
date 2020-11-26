@@ -120,7 +120,7 @@ del dedent
 
 ITEM_PIPELINES = {
     'scrapy_save_as_pdf.pipelines.SaveAsPdfPipeline': -1,
-    'demo.pipelines.SaveToQiniuPipeline': 0,
+    'scrapy_save_to_qiniu.pipelines.SaveToQiniuPipeline': 0,
 }
 
 QINIU_AK = ''

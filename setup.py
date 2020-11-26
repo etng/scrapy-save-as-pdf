@@ -5,7 +5,7 @@ setup(
     name='scrapy-save-as-pdf',
     version='0.2.0',
     url='https://github.com/etng/scrapy-save-as-pdf',
-    description='Download PDF or Save page as PDF',
+    description='Pipeline to Download PDF or Save page as PDF for scrapy item',
     long_description=open('README.md').read() + "\n\n" + open("CHANGES.md").read(),
     long_description_content_type='text/markdown',
     author='etng',

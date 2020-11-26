@@ -1,4 +1,4 @@
-# Download PDF function for scrapy
+# Pipeline to Download PDF or Save page as PDF for scrapy item
 
 
 ## Installation

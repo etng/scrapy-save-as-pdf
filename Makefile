@@ -29,4 +29,4 @@ patch:
 	${bump_version}  patch setup.py scrapy_save_as_pdf/__init__.py
 	#${bump_version}  --current-version ${CURRENT_VERSION} patch setup.py scrapy_save_as_pdf/__init__.py
 demo:
-	(cd demo && python3 entry.py)
+	(cd demo && pip3 install -r requirements.txt && python3 entry.py)
