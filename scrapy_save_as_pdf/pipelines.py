@@ -31,7 +31,8 @@ class SaveAsPdfPipeline:
         )
 
     def process_item(self, item, spider):
-        if pdf_url := item.get("pdf_url"):
+        pdf_url = item.get("pdf_url")
+        if pdf_url:
             try:
                 item["origin_pdf_url"] = pdf_url
             except:  # noqa
@@ -94,7 +95,7 @@ class SaveAsPdfPipeline:
             'preferCSSPageSize': True,
         }
         calculated_print_options.update(self.print_options)
-        print(calculated_print_options)
+        # print(calculated_print_options)
         response = driver.execute_cdp_cmd("Page.printToPDF", calculated_print_options)
         driver.quit()
         filename = os.path.join(self.save_base_dir, f'{self.hash_url(page_url)}.pdf')
