@@ -3,9 +3,11 @@
 
 ## Installation
 
-Install scrapy-save-as-pdf using pip::
+Install `scrapy-save-as-pdf` using `pip`:
 
-    $ pip install scrapy-save-as-pdf
+```
+pip install scrapy-save-as-pdf
+```
 
 ## Configuration
 0. _(Optionally)_ if you want to use `WEBDRIVER_HUB_URL`, you can use `docker` to setup one like this:
@@ -35,8 +37,7 @@ WEBDRIVER_HUB_URL = 'http://127.0.0.1:4444/wd/hub'
 
 If both `WEBDRIVER_HUB_URL` and `CHROME_DRIVER_PATH` are set, we use `WEBDRIVER_HUB_URL`.
 
-2. Enable the pipeline by adding it to ``ITEM_PIPELINES`` in your ``settings.py`` file and changing HttpCompressionMiddleware
- priority:
+2. Enable the pipeline by adding it to ``ITEM_PIPELINES`` in your ``settings.py`` file and changing priority:
    
 ```python
 ITEM_PIPELINES = {
